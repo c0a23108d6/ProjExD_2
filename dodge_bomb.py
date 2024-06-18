@@ -47,7 +47,6 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
         """
 
             
-
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -63,23 +62,27 @@ def main():
     vx, vy = 5, -5
     clock = pg.time.Clock()
     tmr = 0
+
     go_img = pg.Surface((WIDTH, HEIGHT))
-    pg.draw.rect(go_img, (0,0,0), (0, 0, WIDTH/2, HEIGHT/2))
+    pg.draw.rect(go_img, (0,0,0), (0, 0, WIDTH, HEIGHT))
+    go_img.set_alpha(128)
     go_rct = go_img.get_rect()
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("Game Over", True, (255, 255, 255))
-
+    sad_kk = pg.image.load("fig/8.png")
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
-        screen.blit(bg_img, [0, 0])
         if kk_rct.colliderect(bb_rct):
             screen.blit(go_img, go_rct)
-            screen.blit(txt, [WIDTH, HEIGHT])
+            screen.blit(txt, [WIDTH/2, HEIGHT/2])
+            screen.blit(sad_kk, [WIDTH/2, HEIGHT/2+200])
+            screen.blit(sad_kk, [WIDTH/2, HEIGHT/2-200])
             time.sleep(5)
             return
-        #screen.blit(bg_img, [0, 0]) 
+        screen.blit(bg_img, [0, 0]) 
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
         for k, v in DELTA.items():
