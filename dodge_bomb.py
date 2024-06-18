@@ -6,13 +6,13 @@ import time
 
 
 WIDTH, HEIGHT = 1400, 750
-DELTA = {  #移動量辞書
+DELTA = {  # 移動量辞書
     pg.K_UP:(0, -5),
     pg.K_DOWN: (0, 5),
     pg.K_LEFT: (-5, 0),
     pg.K_RIGHT: (5, 0)
 }
-"""KAITEN = {  #演習１
+"""KAITEN = {  # 演習１
     (-5, -5): pg.transform.rotozoom(pg.image.load("fig/3.png"), 45, 2.0),
     (-5, 0): pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0),
     (-5, 5): pg.transform.rotozoom(pg.image.load("fig/3.png"), 315, 2.0),
@@ -54,9 +54,9 @@ def main():
     kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
-    bb_img = pg.Surface((20,20))  #1辺が20の空のsurfaceを作る
+    bb_img = pg.Surface((20,20))  # 1辺が20の空のsurfaceを作る
     bb_img.set_colorkey((0,0,0))
-    pg.draw.circle(bb_img, (255,0,0), (10,10), 10)  #空のsurfaceに赤い円を描く
+    pg.draw.circle(bb_img, (255,0,0), (10,10), 10)  # 空のsurfaceに赤い円を描く
     bb_rct = bb_img.get_rect()
     bb_rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
     vx, vy = 5, -5
